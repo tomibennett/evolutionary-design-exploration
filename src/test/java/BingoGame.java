@@ -29,4 +29,13 @@ public class BingoGame {
 
         assertEquals(boardWithNumberThree, actual);
     }
+
+    @Test
+    void boardWithNumber3And4IsBoardWithNumber3And4() {
+        final var boardWithNumber3And4 = "3 4";
+
+        final var actual = "3 4" == "3 4" ? "3 4" : "";
+
+        assertEquals(boardWithNumber3And4, actual);
+    }
 }
