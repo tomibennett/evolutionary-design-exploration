@@ -34,19 +34,19 @@ public class BingoGame {
 
     @Test
     void boardWithNumber3And4IsBoardWithNumber3And4() {
-        final var boardWithNumber3And4 = "3 4";
+        final var board = "3" + " " + "4";
 
-        final var actual = getNewBoard(boardWithNumber3And4);
+        final var actual = getNewBoard(board);
 
-        assertEquals(boardWithNumber3And4, actual);
+        assertEquals(board, actual);
     }
 
     @Test
     void boardWithNumber3And4And5IsBoardWithNumber3And4And5() {
-        final var boardWithNumber3And4And5 = "3 4 5";
+        final var board = "3" + " " + "4" + " " + "5";
 
-        final var actual = getNewBoard(boardWithNumber3And4And5);
+        final var actual = getNewBoard(board);
 
-        assertEquals(boardWithNumber3And4And5, actual);
+        assertEquals(board, actual);
     }
 }
