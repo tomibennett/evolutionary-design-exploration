@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -77,6 +78,19 @@ public class BingoGame {
         final var actual = getNewBoard(board, numberToMark);
 
         final var expected = "3 marked";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @Disabled
+    void boardWithNumber3NotMarkedAnd4And3AsNumberToMarkIs3MarkedAnd4() {
+        final var board = "3 4";
+        final var numberToMark = "3";
+
+        final var actual = getNewBoard(board, numberToMark);
+
+        final var expected = "3 marked 4";
 
         assertEquals(expected, actual);
     }
