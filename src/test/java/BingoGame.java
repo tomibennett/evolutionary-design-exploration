@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static java.util.stream.Collectors.joining;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 // what are the concepts here
 // a board
@@ -10,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // marking and unmarking
 // winning and so
 public class BingoGame {
-
+    // board concept
     @Test
     void emptyBoardIsEmpty() {
         final var boardEmpty = "";
@@ -37,5 +35,14 @@ public class BingoGame {
         final var actual = "3 4" == "3 4" ? "3 4" : "";
 
         assertEquals(boardWithNumber3And4, actual);
+    }
+
+    @Test
+    void boardWithNumber3And4And5IsBoardWithNumber3And4And5() {
+        final var boardWithNumber3And4And5 = "3 4 5";
+
+        final var actual = "3 4 5" == "3 4 5" ? "3 4 5" : "";
+
+        assertEquals(boardWithNumber3And4And5, actual);
     }
 }
