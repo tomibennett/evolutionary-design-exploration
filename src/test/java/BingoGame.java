@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // marking and unmarking
 // winning and so
 public class BingoGame {
-    private String getNewBoard(String board) {
+    private String getNewBoard(String board, String numberToMark) {
         return board;
     }
 
@@ -17,7 +17,7 @@ public class BingoGame {
     void emptyBoardIsEmpty() {
         final var boardEmpty = "";
 
-        final var actual = getNewBoard(boardEmpty);
+        final var actual = getNewBoard(boardEmpty, "");
 
         assertEquals(boardEmpty, actual);
     }
@@ -27,7 +27,7 @@ public class BingoGame {
     void boardWithNumber3IsBoardWithNumber3() {
         final var boardWithNumberThree = "3";
 
-        final var actual = getNewBoard(boardWithNumberThree);
+        final var actual = getNewBoard(boardWithNumberThree, "");
 
         assertEquals(boardWithNumberThree, actual);
     }
@@ -36,7 +36,7 @@ public class BingoGame {
     void boardWithNumber3And4IsBoardWithNumber3And4() {
         final var board = "3" + " " + "4";
 
-        final var actual = getNewBoard(board);
+        final var actual = getNewBoard(board, "");
 
         assertEquals(board, actual);
     }
@@ -45,7 +45,18 @@ public class BingoGame {
     void boardWithNumber3And4And5IsBoardWithNumber3And4And5() {
         final var board = "3" + " " + "4" + " " + "5";
 
-        final var actual = getNewBoard(board);
+        final var actual = getNewBoard(board, "");
+
+        assertEquals(board, actual);
+    }
+
+    // marking
+    @Test
+    void boardWithNumber3NotMarkedAnd2AsNumberToMarkIs3() {
+        final var board = "3";
+        final var numberToMark = "2";
+
+        final var actual = getNewBoard(board, numberToMark);
 
         assertEquals(board, actual);
     }
