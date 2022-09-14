@@ -9,6 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // winning and so
 public class BingoGame {
     private String getNewBoard(String board, String numberToMark) {
+        if (board == "") {
+            return "";
+        }
+
+        if (board == numberToMark) {
+            return board + " " + "marked";
+        }
+
         return board;
     }
 
@@ -59,5 +67,17 @@ public class BingoGame {
         final var actual = getNewBoard(board, numberToMark);
 
         assertEquals(board, actual);
+    }
+
+    @Test
+    void boardWithNumber3NotMarkedAnd3AsNumberToMarkIs3Marked() {
+        final var board = "3";
+        final var numberToMark = "3";
+
+        final var actual = getNewBoard(board, numberToMark);
+
+        final var expected = "3 marked";
+
+        assertEquals(expected, actual);
     }
 }
