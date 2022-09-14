@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // what are the concepts here
@@ -10,12 +12,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // winning and so
 public class BingoGame {
     private String getNewBoard(String board, String numberToMark) {
-        if (board == "") {
+        if (Objects.equals(board, "")) {
             return "";
         }
 
-        if (board == numberToMark) {
+        if (Objects.equals(board, numberToMark)) {
             return board + " " + "marked";
+        }
+
+        final var bingoNumbers = board.split(" ");
+
+        if (bingoNumbers.length == 2) {
+            if (Objects.equals(bingoNumbers[0], numberToMark)) {
+                return bingoNumbers[0] + " " + "marked" + " " + bingoNumbers[1];
+            }
+
+            if (Objects.equals(bingoNumbers[1], numberToMark)) {
+                return bingoNumbers[0] + " " + bingoNumbers[1] + " " + "marked";
+            }
         }
 
         return board;
@@ -83,8 +97,19 @@ public class BingoGame {
     }
 
     @Test
-    @Disabled
-    void boardWithNumber3NotMarkedAnd4And3AsNumberToMarkIs3MarkedAnd4() {
+    void boardWithNumber3NotMarkedAnd4NotMarkedAnd4AsNumberToMarkIs3UnmarkedAnd4Marked() {
+        final var board = "3 4";
+        final var numberToMark = "4";
+
+        final var actual = getNewBoard(board, numberToMark);
+
+        final var expected = "3 4 marked";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void boardWithNumber3NotMarkedAnd4And3AsNumberToMarkIs3MarkedAnd4Unmarked() {
         final var board = "3 4";
         final var numberToMark = "3";
 
