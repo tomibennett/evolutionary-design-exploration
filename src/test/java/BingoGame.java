@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
@@ -50,20 +49,23 @@ public class BingoGame {
 
         assertEquals(boardEmpty, actual);
     }
-
     // introducing numbers
     @Test
     void boardWithNumber3IsBoardWithNumber3() {
-        final var boardWithNumberThree = "3";
+        final var number1 = "3";
+        final var board = number1;
 
-        final var actual = getNewBoard(boardWithNumberThree, "");
+        final var actual = getNewBoard(board, "");
 
-        assertEquals(boardWithNumberThree, actual);
+        assertEquals(board, actual);
     }
 
     @Test
     void boardWithNumber3And4IsBoardWithNumber3And4() {
-        final var board = "3" + " " + "4";
+        final var number1 = "3";
+        final var sep = " ";
+        final var number2 = "4";
+        final var board = number1 + sep + number2;
 
         final var actual = getNewBoard(board, "");
 
@@ -72,18 +74,23 @@ public class BingoGame {
 
     @Test
     void boardWithNumber3And4And5IsBoardWithNumber3And4And5() {
-        final var board = "3" + " " + "4" + " " + "5";
+        final var number1 = "3";
+        final var sep = " ";
+        final var number2 = "4";
+        final var number3 = "5";
+        final var board = number1 + sep + number2 + sep + number3;
 
         final var actual = getNewBoard(board, "");
 
         assertEquals(board, actual);
     }
-
     // marking
+
     @Test
     void boardWithNumber3NotMarkedAnd2AsNumberToMarkIs3() {
-        final var board = "3";
+        final var number1 = "3";
         final var numberToMark = "2";
+        final var board = number1;
 
         final var actual = getNewBoard(board, numberToMark);
 
@@ -92,48 +99,61 @@ public class BingoGame {
 
     @Test
     void boardWithNumber3NotMarkedAnd3AsNumberToMarkIs3Marked() {
-        final var board = "3";
-        final var numberToMark = "3";
+        final var number1 = "3";
+        final var sep = " ";
+        final var numberToMark = number1;
+
+        final var board = number1;
 
         final var actual = getNewBoard(board, numberToMark);
 
-        final var expected = "3 marked";
+        final var expected = number1 + sep + "marked";
 
         assertEquals(expected, actual);
     }
 
     @Test
     void boardWithNumber3NotMarkedAnd4NotMarkedAnd4AsNumberToMarkIs3UnmarkedAnd4Marked() {
-        final var board = "3 4";
-        final var numberToMark = "4";
+        final var number1 = "3";
+        final var sep = " ";
+        final var number2 = "4";
+        final var board = number1 + sep + number2;
+        final var numberToMark = number2;
 
         final var actual = getNewBoard(board, numberToMark);
 
-        final var expected = "3 4 marked";
+        final var expected = number1 + sep + number2 + sep + "marked";
 
         assertEquals(expected, actual);
     }
 
     @Test
     void boardWithNumber3NotMarkedAnd4And3AsNumberToMarkIs3MarkedAnd4Unmarked() {
-        final var board = "3 4";
-        final var numberToMark = "3";
+        final var number1 = "3";
+        final var sep = " ";
+        final var number2 = "4";
+        final var board = number1 + sep + number2;
+        final var numberToMark = number1;
 
         final var actual = getNewBoard(board, numberToMark);
 
-        final var expected = "3 marked 4";
+        final var expected = number1 + sep + "marked" + sep + number2;
 
         assertEquals(expected, actual);
     }
 
     @Test
     void boardWithNumber3NotMarkedAnd4NotMarkedAnd5NotMarkedAnd3AsNumberToMarkIs3MarkedAnd4UnmarkedAnd5NotMarked() {
-        final var board = "3 4 5";
-        final var numberToMark = "3";
+        final var number1 = "3";
+        final var sep = " ";
+        final var number2 = "4";
+        final var number3 = "5";
+        final var board = number1 + sep + number2 + sep + number3;
+        final var numberToMark = number1;
 
         final var actual = getNewBoard(board, numberToMark);
 
-        final var expected = "3 marked 4 5";
+        final var expected = number1 + sep + "marked" + sep + number2 + sep + number3;
 
         assertEquals(expected, actual);
     }
