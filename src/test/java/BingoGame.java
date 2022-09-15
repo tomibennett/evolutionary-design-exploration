@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,21 +21,29 @@ public class BingoGame {
             return board + " " + "marked";
         }
 
-        final var bingoNumbers = board.split(" ");
+        final var bingoNumbers = new ArrayList<String>();
 
-        if (bingoNumbers.length == 2) {
-            if (Objects.equals(bingoNumbers[0], numberToMark)) {
-                return bingoNumbers[0] + " " + "marked" + " " + bingoNumbers[1];
+        final var bingoNumberToken = Pattern.compile("\\d(\\smarked)?");
+
+        final var matcher = bingoNumberToken.matcher(board);
+
+        while (matcher.find()) {
+            bingoNumbers.add(matcher.group());
+        }
+
+        if (bingoNumbers.size() == 2) {
+            if (Objects.equals(bingoNumbers.get(0), numberToMark)) {
+                return bingoNumbers.get(0) + " " + "marked" + " " + bingoNumbers.get(1);
             }
 
-            if (Objects.equals(bingoNumbers[1], numberToMark)) {
-                return bingoNumbers[0] + " " + bingoNumbers[1] + " " + "marked";
+            if (Objects.equals(bingoNumbers.get(1), numberToMark)) {
+                return bingoNumbers.get(0) + " " + bingoNumbers.get(1) + " " + "marked";
             }
         }
 
-        if (bingoNumbers.length == 3) {
-            if (Objects.equals(bingoNumbers[0], numberToMark)) {
-                return bingoNumbers[0] + " " + "marked" + " " + bingoNumbers[1] + " " + bingoNumbers[2];
+        if (bingoNumbers.size() == 3) {
+            if (Objects.equals(bingoNumbers.get(0), numberToMark)) {
+                return bingoNumbers.get(0) + " " + "marked" + " " + bingoNumbers.get(1) + " " + bingoNumbers.get(2);
             }
         }
 
@@ -134,6 +143,18 @@ public class BingoGame {
         final var actual = getNewBoard(board, numberToMark);
 
         final var expected = "3 marked 4 5";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void boardWithNumber3MarkedAndNumber3ToMarkIsBoardWithNumber3Marked() {
+        final var board = "3 marked";
+        final var numberToMark = "3";
+
+        final var actual = getNewBoard(board, numberToMark);
+
+        final var expected = "3 marked";
 
         assertEquals(expected, actual);
     }
