@@ -32,6 +32,12 @@ public class BingoGame {
             }
         }
 
+        if (bingoNumbers.length == 3) {
+            if (Objects.equals(bingoNumbers[0], numberToMark)) {
+                return bingoNumbers[0] + " " + "marked" + " " + bingoNumbers[1] + " " + bingoNumbers[2];
+            }
+        }
+
         return board;
     }
 
@@ -116,6 +122,18 @@ public class BingoGame {
         final var actual = getNewBoard(board, numberToMark);
 
         final var expected = "3 marked 4";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void boardWithNumber3NotMarkedAnd4NotMarkedAnd5NotMarkedAnd3AsNumberToMarkIs3MarkedAnd4UnmarkedAnd5NotMarked() {
+        final var board = "3 4 5";
+        final var numberToMark = "3";
+
+        final var actual = getNewBoard(board, numberToMark);
+
+        final var expected = "3 marked 4 5";
 
         assertEquals(expected, actual);
     }
