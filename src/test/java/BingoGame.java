@@ -30,7 +30,9 @@ public class BingoGame {
 
         final var actual = board;
 
-        assertEquals(board, actual);
+        final var expected = number1;
+
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -42,7 +44,9 @@ public class BingoGame {
 
         final var actual = board;
 
-        assertEquals(board, actual);
+        final var expected = number1 + sep + number2;
+
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -55,11 +59,14 @@ public class BingoGame {
 
         final var actual = board;
 
-        assertEquals(board, actual);
+        final var expected = number1 + sep + number2 + sep + number3;
+
+        assertEquals(expected, actual);
     }
 
     // marking
     @Test
+    @Disabled
     void boardWithNumber3NotMarkedAnd2AsNumberToMarkIs3() {
         final var number1 = "3";
         final var numberToMark = "2";
@@ -71,6 +78,7 @@ public class BingoGame {
     }
 
     @Test
+    @Disabled
     void boardWithNumber3NotMarkedAnd3AsNumberToMarkIs3Marked() {
         final var number1 = "3";
         final var sep = " ";
@@ -89,6 +97,7 @@ public class BingoGame {
     }
 
     @Test
+    @Disabled
     void boardWithNumber3NotMarkedAnd4NotMarkedAnd4AsNumberToMarkIs3UnmarkedAnd4Marked() {
         final var number1 = "3";
         final var sep = " ";
