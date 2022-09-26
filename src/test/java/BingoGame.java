@@ -35,23 +35,23 @@ public class BingoGame {
     // introducing numbers
     @Test
     void boardWithNumber3IsBoardWithNumber3() {
+        final var sep = " ";
         final var number1 = "3";
-        final var sep = "";
         final var numbers = new String[]{number1};
 
         final var board = getBoardFromNumbers(sep, numbers);
 
         final var actual = board;
 
-        final var expected = number1;
+        final var expected = getBoardFromNumbers(sep, numbers);
 
         assertEquals(expected, actual);
     }
 
     @Test
     void boardWithNumber3And4IsBoardWithNumber3And4() {
-        final var number1 = "3";
         final var sep = " ";
+        final var number1 = "3";
         final var number2 = "4";
         final var numbers = new String[]{number1, number2};
 
@@ -59,15 +59,15 @@ public class BingoGame {
 
         final var actual = board;
 
-        final var expected = number1 + sep + number2;
+        final var expected = getBoardFromNumbers(sep, numbers);
 
         assertEquals(expected, actual);
     }
 
     @Test
     void boardWithNumber3And4And5IsBoardWithNumber3And4And5() {
-        final var number1 = "3";
         final var sep = " ";
+        final var number1 = "3";
         final var number2 = "4";
         final var number3 = "5";
         final var numbers = new String[]{number1, number2, number3};
@@ -76,7 +76,7 @@ public class BingoGame {
 
         final var actual = board;
 
-        final var expected = number1 + sep + number2 + sep + number3;
+        final var expected = getBoardFromNumbers(sep, numbers);
 
         assertEquals(expected, actual);
     }
