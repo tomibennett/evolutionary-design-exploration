@@ -1,7 +1,4 @@
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,51 +12,63 @@ public class BingoGame {
     @Test
     void emptyBoardIsEmpty() {
         final var boardEmpty = "";
-        final var board = boardEmpty;
 
-        final var actual = board;
+        final var actual = boardEmpty;
 
-        assertEquals(boardEmpty, actual);
+        assertEquals("", actual);
     }
 
     // introducing numbers
     @Test
     void boardWithNumber3IsBoardWithNumber3() {
+        final var boardEmpty = "";
+        final var sep = " ";
         final var number1 = "3";
-        final var board = number1;
+
+        var board = boardEmpty;
+        board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
 
         final var actual = board;
 
-        final var expected = number1;
+        final var expected = "3";
 
         assertEquals(expected, actual);
     }
 
     @Test
-    void boardWithNumber3And4IsBoardWithNumber3And4() {
-        final var number1 = "3";
+    void boardWithNumber3And66IsBoardWithNumber3And66() {
+        final var boardEmpty = "";
         final var sep = " ";
-        final var number2 = "4";
-        final var board = number1 + sep + number2;
+        final var number1 = "3";
+        final var number2 = "66";
+
+        var board = boardEmpty;
+        board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
+        board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
 
         final var actual = board;
 
-        final var expected = number1 + sep + number2;
+        final var expected = "3 66";
 
         assertEquals(expected, actual);
     }
 
     @Test
-    void boardWithNumber3And4And5IsBoardWithNumber3And4And5() {
-        final var number1 = "3";
+    void boardWithNumber3And66And2987IsBoardWithNumber3And66And2987() {
+        final var boardEmpty = "";
         final var sep = " ";
-        final var number2 = "4";
-        final var number3 = "5";
-        final var board = number1 + sep + number2 + sep + number3;
+        final var number1 = "3";
+        final var number2 = "66";
+        final var number3 = "2987";
+
+        var board = boardEmpty;
+        board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
+        board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
+        board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
 
         final var actual = board;
 
-        final var expected = number1 + sep + number2 + sep + number3;
+        final var expected = "3 66 2987";
 
         assertEquals(expected, actual);
     }
