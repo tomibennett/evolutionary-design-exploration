@@ -24,10 +24,22 @@ public class BingoGame {
         final var boardEmpty = "";
         final var sep = " ";
         final var number1 = "3";
+        final String number2 = null;
+        final String number3 = null;
 
         var board = boardEmpty;
-        board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
 
+        if (number1 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
+        }
+
+        if (number2 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
+        }
+
+        if (number3 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
+        }
         final var actual = board;
 
         final var expected = "3";
@@ -41,10 +53,22 @@ public class BingoGame {
         final var sep = " ";
         final var number1 = "3";
         final var number2 = "66";
+        final String number3 = null;
 
         var board = boardEmpty;
-        board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
-        board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
+
+        if (number1 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
+        }
+
+        if (number2 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
+        }
+
+        if (number3 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
+        }
+
 
         final var actual = board;
 
@@ -62,9 +86,18 @@ public class BingoGame {
         final var number3 = "2987";
 
         var board = boardEmpty;
-        board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
-        board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
-        board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
+
+        if (number1 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
+        }
+
+        if (number2 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
+        }
+
+        if (number3 != null) {
+            board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
+        }
 
         final var actual = board;
 
