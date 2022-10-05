@@ -21,4 +21,9 @@ class BoardBuilder {
     }
 
 
+    protected BoardBuilder withNumberMarked(final String numberToMark) {
+        this.numbers.add(numberToMark + " marked");
+
+        return this;
+    }
 }

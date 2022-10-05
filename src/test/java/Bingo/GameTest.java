@@ -63,18 +63,24 @@ public class GameTest {
         assertEquals(expected, bingoBoard);
     }
 
-//    // marking
-//    @Test
-//    @Disabled
-//    void boardWithNumber3NotMarkedAnd2AsNumberToMarkIs3() {
-//        final var number1 = "3";
-//        final var numberToMark = "2";
-//        final var board = number1;
-//
-//        final var actual = board;
-//
-//        assertEquals(board, actual);
-//    }
+   // marking
+   @Test
+   void boardWithNumber3NotMarkedAnd3AsNumberToMarkIs3Marked() {
+       final var number1 = "3";
+       final var board =
+           new BoardBuilder()
+               .withNumber(number1)
+               .build();
+
+       final var actual = board.mark(number1);
+
+       final var expected =
+           new BoardBuilder()
+                .withNumberMarked(number1)
+                .build();
+
+       assertEquals(expected, actual);
+   }
 //
 //    @Test
 //    @Disabled

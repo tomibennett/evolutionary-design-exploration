@@ -6,12 +6,16 @@ import java.util.List;
 class Board {
     private String[] numbers;
 
-    public Board(String[] numbers) {
+    Board(String[] numbers) {
         this.numbers = numbers;
     }
 
-    public static Board fromList(List<String> numbers) {
+    static Board fromList(List<String> numbers) {
         return new Board(numbers.toArray(new String[0]));
+    }
+
+    Board mark(final String numberToMark) {
+        return new BoardBuilder().withNumberMarked(numberToMark).build();
     }
 
     @Override
@@ -25,5 +29,10 @@ class Board {
     @Override
     public int hashCode() {
         return Arrays.hashCode(numbers);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(numbers);
     }
 }
