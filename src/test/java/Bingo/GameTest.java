@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // numbers
 // marking and unmarking
 // winning and so
-public class Game {
+public class GameTest {
     // introducing numbers
     @Test
     void boardWithNumber3IsBoardWithNumber3() {
@@ -19,11 +19,9 @@ public class Game {
             .withNumber(number1)
             .build();
 
-        final var actual = bingoBoard.printBoard();
+        final var expected = new BoardBuilder().withNumber(number1).build();
 
-        final var expected = "3";
-
-        assertEquals(expected, actual);
+        assertEquals(expected, bingoBoard);
     }
 
     @Test
@@ -36,11 +34,12 @@ public class Game {
             .withNumber(number2)
             .build();
 
-        final var actual = bingoBoard.printBoard();
+        final var expected = new BoardBuilder()
+            .withNumber(number1)
+            .withNumber(number2)
+            .build();
 
-        final var expected = "3 66";
-
-        assertEquals(expected, actual);
+        assertEquals(expected, bingoBoard);
     }
 
     @Test
@@ -55,11 +54,13 @@ public class Game {
             .withNumber(number3)
             .build();
 
-        final var actual = bingoBoard.printBoard();
+        final var expected = new BoardBuilder()
+            .withNumber(number1)
+            .withNumber(number2)
+            .withNumber(number3)
+            .build();
 
-        final var expected = "3 66 2987";
-
-        assertEquals(expected, actual);
+        assertEquals(expected, bingoBoard);
     }
 
 //    // marking
