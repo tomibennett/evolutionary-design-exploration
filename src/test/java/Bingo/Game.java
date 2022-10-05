@@ -1,3 +1,5 @@
+package Bingo;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,40 +9,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // numbers
 // marking and unmarking
 // winning and so
-public class BingoGame {
-    // board concept
-    @Test
-    void emptyBoardIsEmpty() {
-        final var boardEmpty = "";
-
-        final var actual = boardEmpty;
-
-        assertEquals("", actual);
-    }
-
+public class Game {
     // introducing numbers
     @Test
     void boardWithNumber3IsBoardWithNumber3() {
-        final var boardEmpty = "";
-        final var sep = " ";
         final var number1 = "3";
-        final String number2 = null;
-        final String number3 = null;
 
-        var board = boardEmpty;
+        final var bingoBoard = new BoardBuilder()
+            .withNumber(number1)
+            .build();
 
-        if (number1 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
-        }
-
-        if (number2 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
-        }
-
-        if (number3 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
-        }
-        final var actual = board;
+        final var actual = bingoBoard.printBoard();
 
         final var expected = "3";
 
@@ -49,28 +28,15 @@ public class BingoGame {
 
     @Test
     void boardWithNumber3And66IsBoardWithNumber3And66() {
-        final var boardEmpty = "";
-        final var sep = " ";
         final var number1 = "3";
         final var number2 = "66";
-        final String number3 = null;
 
-        var board = boardEmpty;
+        final var bingoBoard = new BoardBuilder()
+            .withNumber(number1)
+            .withNumber(number2)
+            .build();
 
-        if (number1 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
-        }
-
-        if (number2 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
-        }
-
-        if (number3 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
-        }
-
-
-        final var actual = board;
+        final var actual = bingoBoard.printBoard();
 
         final var expected = "3 66";
 
@@ -79,27 +45,17 @@ public class BingoGame {
 
     @Test
     void boardWithNumber3And66And2987IsBoardWithNumber3And66And2987() {
-        final var boardEmpty = "";
-        final var sep = " ";
         final var number1 = "3";
         final var number2 = "66";
         final var number3 = "2987";
 
-        var board = boardEmpty;
+        final var bingoBoard = new BoardBuilder()
+            .withNumber(number1)
+            .withNumber(number2)
+            .withNumber(number3)
+            .build();
 
-        if (number1 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number1;
-        }
-
-        if (number2 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number2;
-        }
-
-        if (number3 != null) {
-            board = board + (board != boardEmpty ? sep : boardEmpty) + number3;
-        }
-
-        final var actual = board;
+        final var actual = bingoBoard.printBoard();
 
         final var expected = "3 66 2987";
 
