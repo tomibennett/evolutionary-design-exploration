@@ -81,6 +81,28 @@ public class GameTest {
 
        assertEquals(expected, actual);
    }
+
+    @Test
+    void boardWithNumber3NotMarkedAndNumber66NotMarkedAndNumber66ToMarkIsBoard3UnmarkedAnd66Marked() {
+        final var number1 = "3";
+        final var number2 = "66";
+        final var board =
+            new BoardBuilder()
+                .withNumber(number1)
+                .withNumber(number2)
+                .build();
+
+        final var actual = board.mark(number2);
+
+        final var expected =
+            new BoardBuilder()
+                .withNumber(number1)
+                .withNumberMarked(number2)
+                .build();
+
+        assertEquals(expected, actual);
+    }
+
 //
 //    @Test
 //    @Disabled

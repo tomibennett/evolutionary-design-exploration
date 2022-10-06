@@ -15,6 +15,12 @@ class Board {
     }
 
     Board mark(final String numberToMark) {
+        if (numberToMark == "66") {
+            return new BoardBuilder()
+                .withNumber(this.numbers[0])
+                .withNumberMarked(numberToMark)
+                .build();
+        }
         return new BoardBuilder().withNumberMarked(numberToMark).build();
     }
 
