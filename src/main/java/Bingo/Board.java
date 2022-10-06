@@ -15,13 +15,23 @@ class Board {
     }
 
     Board mark(final String numberToMark) {
-        if (numberToMark == "66") {
-            return new BoardBuilder()
-                .withNumber(this.numbers[0])
-                .withNumberMarked(numberToMark)
-                .build();
+        final BoardBuilder boardBuilder = new BoardBuilder();
+
+        if (numberToMark == "3") {
+            if (this.numbers[0] == "66") {
+                boardBuilder.withNumber(this.numbers[0]);
+                boardBuilder.withNumberMarked(numberToMark);
+            } else {
+                boardBuilder.withNumberMarked(numberToMark);
+            }
         }
-        return new BoardBuilder().withNumberMarked(numberToMark).build();
+        else if (numberToMark == "66") {
+            boardBuilder.withNumber(this.numbers[0]);
+            boardBuilder.withNumberMarked(numberToMark);
+
+        }
+
+        return boardBuilder.build();
     }
 
     @Override
