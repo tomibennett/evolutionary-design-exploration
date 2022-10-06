@@ -63,66 +63,6 @@ public class GameTest {
         assertEquals(expected, bingoBoard);
     }
 
-   // marking
-   @Test
-   void boardWithNumber3NotMarkedAnd3AsNumberToMarkIs3Marked() {
-       final var number1 = "3";
-       final var board =
-           new BoardBuilder()
-               .withNumber(number1)
-               .build();
-
-       final var actual = board.mark(number1);
-
-       final var expected =
-           new BoardBuilder()
-                .withNumberMarked(number1)
-                .build();
-
-       assertEquals(expected, actual);
-   }
-
-    @Test
-    void boardWithNumber3NotMarkedAndNumber66NotMarkedAndNumber66ToMarkIsBoard3UnmarkedAnd66Marked() {
-        final var number1 = "3";
-        final var number2 = "66";
-        final var board =
-            new BoardBuilder()
-                .withNumber(number1)
-                .withNumber(number2)
-                .build();
-
-        final var actual = board.mark(number2);
-
-        final var expected =
-            new BoardBuilder()
-                .withNumber(number1)
-                .withNumberMarked(number2)
-                .build();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void boardWithNumber66NotMarkedAndNumber3NotMarkedAndNumber3ToMarkIsBoard66UnmarkedAnd3Marked() {
-        final var number1 = "66";
-        final var number2 = "3";
-        final var board =
-            new BoardBuilder()
-                .withNumber(number1)
-                .withNumber(number2)
-                .build();
-
-        final var actual = board.mark(number2);
-
-        final var expected =
-            new BoardBuilder()
-                .withNumber(number1)
-                .withNumberMarked(number2)
-                .build();
-
-        assertEquals(expected, actual);
-    }
 
 //
 //    @Test

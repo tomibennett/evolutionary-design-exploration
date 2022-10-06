@@ -14,26 +14,6 @@ class Board {
         return new Board(numbers.toArray(new String[0]));
     }
 
-    Board mark(final String numberToMark) {
-        final BoardBuilder boardBuilder = new BoardBuilder();
-
-        if (numberToMark == "3") {
-            if (this.numbers[0] == "66") {
-                boardBuilder.withNumber(this.numbers[0]);
-                boardBuilder.withNumberMarked(numberToMark);
-            } else {
-                boardBuilder.withNumberMarked(numberToMark);
-            }
-        }
-        else if (numberToMark == "66") {
-            boardBuilder.withNumber(this.numbers[0]);
-            boardBuilder.withNumberMarked(numberToMark);
-
-        }
-
-        return boardBuilder.build();
-    }
-
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
