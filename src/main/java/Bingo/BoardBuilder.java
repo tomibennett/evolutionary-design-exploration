@@ -19,11 +19,4 @@ class BoardBuilder {
     public Board build() {
         return Board.fromList(numbers);
     }
-
-
-    protected BoardBuilder withNumberMarked(final String numberToMark) {
-        this.numbers.add(numberToMark + " marked");
-
-        return this;
-    }
 }

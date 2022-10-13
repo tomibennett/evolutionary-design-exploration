@@ -14,6 +14,17 @@ class Board {
         return new Board(numbers.toArray(new String[0]));
     }
 
+    void mark(final String numberDrawn) {
+        final var mark = " marked";
+        var numberToMarkPosition = 0;
+
+        if (numbers.length == 2 && numberDrawn == numbers[1]) {
+            numberToMarkPosition = 1;
+        }
+
+        numbers[numberToMarkPosition] = numberDrawn + mark;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
