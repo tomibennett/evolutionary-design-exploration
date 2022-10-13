@@ -22,6 +22,10 @@ class Board {
             numberToMarkPosition = 1;
         }
 
+        if (numbers.length == 3 && numberDrawn == numbers[1]) {
+            numberToMarkPosition = 1;
+        }
+
         numbers[numberToMarkPosition] = numberDrawn + mark;
     }
 

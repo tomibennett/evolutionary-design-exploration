@@ -155,4 +155,28 @@ public class GameTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void onAThreeNumberBoardTheNumberDrawnIsPresentAtSecondPositionOnTheBoardThenItIsMarked() {
+        final var board =
+            new BoardBuilder()
+                .withNumber("23")
+                .withNumber("85")
+                .withNumber("246")
+                .build();
+        final var numberDrawn = "85";
+
+        board.mark(numberDrawn);
+
+        final var actual = board;
+
+        final var expected =
+            new BoardBuilder()
+                .withNumber("23")
+                .withNumber("85 marked")
+                .withNumber("246")
+                .build();
+
+        assertEquals(expected, actual);
+    }
 }
