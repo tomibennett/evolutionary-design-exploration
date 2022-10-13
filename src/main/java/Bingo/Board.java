@@ -15,21 +15,11 @@ class Board {
     }
 
     void mark(final String numberDrawn) {
-        var numberToMarkPosition = 0;
-
-        if (numbers.length == 2 && numberDrawn == numbers[1]) {
-            numberToMarkPosition = 1;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numberDrawn == numbers[i]) {
+                numbers[i] += " marked";
+            }
         }
-
-        if (numbers.length == 3 && numberDrawn == numbers[1]) {
-            numberToMarkPosition = 1;
-        }
-
-        if (numbers.length == 3 && numberDrawn == numbers[2]) {
-            numberToMarkPosition = 2;
-        }
-
-        numbers[numberToMarkPosition] = numberDrawn + " marked";
     }
 
     @Override
