@@ -76,13 +76,14 @@ public class GameTest {
                 .build();
         final var numberDrawn = "39";
 
+        final var numberMarked = markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
 
         final var expected =
             new BoardBuilder()
-                .withNumber("39 marked")
+                .withNumber(numberMarked)
                 .build();
 
         assertEquals(expected, actual);
@@ -97,13 +98,14 @@ public class GameTest {
                 .build();
         final var numberDrawn = "92";
 
+        final var numberMarked = markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
 
         final var expected =
             new BoardBuilder()
-                .withNumber("92 marked")
+                .withNumber(numberMarked)
                 .withNumber("1234")
                 .build();
 
@@ -119,6 +121,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "26";
 
+        final var numberMarked = markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -126,7 +129,7 @@ public class GameTest {
         final var expected =
             new BoardBuilder()
                 .withNumber("38")
-                .withNumber("26 marked")
+                .withNumber(numberMarked)
                 .build();
 
         assertEquals(expected, actual);
@@ -142,13 +145,14 @@ public class GameTest {
                 .build();
         final var numberDrawn = "23";
 
+        final var numberMarked = markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
 
         final var expected =
             new BoardBuilder()
-                .withNumber("23 marked")
+                .withNumber(numberMarked)
                 .withNumber("85")
                 .withNumber("246")
                 .build();
@@ -166,6 +170,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "85";
 
+        final var numberMarked = markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -173,7 +178,7 @@ public class GameTest {
         final var expected =
             new BoardBuilder()
                 .withNumber("23")
-                .withNumber("85 marked")
+                .withNumber(numberMarked)
                 .withNumber("246")
                 .build();
 
@@ -191,6 +196,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "246";
 
+        final var numberMarked = markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -199,9 +205,13 @@ public class GameTest {
             new BoardBuilder()
                 .withNumber("23")
                 .withNumber("85")
-                .withNumber("246 marked")
+                .withNumber(numberMarked)
                 .build();
 
         assertEquals(expected, actual);
+    }
+
+    private static String markNumber(final String numberToMark) {
+        return numberToMark + " " + "marked";
     }
 }

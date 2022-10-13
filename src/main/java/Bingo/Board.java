@@ -17,7 +17,7 @@ class Board {
     void mark(final String numberDrawn) {
         for (int i = 0; i < numbers.length; i++) {
             if (numberDrawn == numbers[i]) {
-                numbers[i] += " marked";
+                numbers[i] = numbers[i] + " " + "marked";
             }
         }
     }
