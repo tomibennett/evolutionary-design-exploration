@@ -15,7 +15,6 @@ class Board {
     }
 
     void mark(final String numberDrawn) {
-        final var mark = " marked";
         var numberToMarkPosition = 0;
 
         if (numbers.length == 2 && numberDrawn == numbers[1]) {
@@ -26,7 +25,11 @@ class Board {
             numberToMarkPosition = 1;
         }
 
-        numbers[numberToMarkPosition] = numberDrawn + mark;
+        if (numbers.length == 3 && numberDrawn == numbers[2]) {
+            numberToMarkPosition = 2;
+        }
+
+        numbers[numberToMarkPosition] = numberDrawn + " marked";
     }
 
     @Override
