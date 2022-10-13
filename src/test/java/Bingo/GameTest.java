@@ -9,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // numbers
 // marking and unmarking
 // winning and so
+
+
+// TODOs
+// - [ ] abstract number ?
+// - [ ] marked number method for builder ?
 public class GameTest {
     // introducing numbers
     @Test
@@ -65,16 +70,20 @@ public class GameTest {
 
     @Test
     void onAOneNumberBoardTheNumberDrawnIsPresentOnTheBoardThenItIsMarked() {
-        final var board = new BoardBuilder().withNumber("39").build();
+        final var board =
+            new BoardBuilder()
+                .withNumber("39")
+                .build();
         final var numberDrawn = "39";
-
 
         board.mark(numberDrawn);
 
-
         final var actual = board;
 
-        final var expected = new BoardBuilder().withNumber("39 marked").build();
+        final var expected =
+            new BoardBuilder()
+                .withNumber("39 marked")
+                .build();
 
         assertEquals(expected, actual);
     }
@@ -88,9 +97,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "92";
 
-
         board.mark(numberDrawn);
-
 
         final var actual = board;
 
@@ -112,9 +119,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "26";
 
-
         board.mark(numberDrawn);
-
 
         final var actual = board;
 
@@ -122,6 +127,30 @@ public class GameTest {
             new BoardBuilder()
                 .withNumber("38")
                 .withNumber("26 marked")
+                .build();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void onAThreeNumberBoardTheNumberDrawnIsPresentAtFirstPositionOnTheBoardThenItIsMarked() {
+        final var board =
+            new BoardBuilder()
+                .withNumber("23")
+                .withNumber("85")
+                .withNumber("246")
+                .build();
+        final var numberDrawn = "23";
+
+        board.mark(numberDrawn);
+
+        final var actual = board;
+
+        final var expected =
+            new BoardBuilder()
+                .withNumber("23 marked")
+                .withNumber("85")
+                .withNumber("246")
                 .build();
 
         assertEquals(expected, actual);
