@@ -17,9 +17,14 @@ class Board {
     void mark(final String numberDrawn) {
         for (int i = 0; i < numbers.length; i++) {
             if (numberDrawn == numbers[i]) {
-                numbers[i] = numbers[i] + " " + "marked";
+                final var numberToMark = numbers[i];
+                numbers[i] = markNumber(numberToMark);
             }
         }
+    }
+
+    static String markNumber(final String numberToMark) {
+        return numberToMark + " " + "marked";
     }
 
     @Override

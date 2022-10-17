@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // - [ ] marked number method for builder ?
 public class GameTest {
     // introducing numbers
+
     @Test
     void boardWithNumber3IsBoardWithNumber3() {
         final var number1 = "3";
@@ -76,7 +77,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "39";
 
-        final var numberMarked = markNumber(numberDrawn);
+        final var numberMarked = Board.markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -98,7 +99,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "92";
 
-        final var numberMarked = markNumber(numberDrawn);
+        final var numberMarked = Board.markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -121,7 +122,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "26";
 
-        final var numberMarked = markNumber(numberDrawn);
+        final var numberMarked = Board.markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -145,7 +146,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "23";
 
-        final var numberMarked = markNumber(numberDrawn);
+        final var numberMarked = Board.markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -170,7 +171,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "85";
 
-        final var numberMarked = markNumber(numberDrawn);
+        final var numberMarked = Board.markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -196,7 +197,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = "246";
 
-        final var numberMarked = markNumber(numberDrawn);
+        final var numberMarked = Board.markNumber(numberDrawn);
         board.mark(numberDrawn);
 
         final var actual = board;
@@ -209,9 +210,5 @@ public class GameTest {
                 .build();
 
         assertEquals(expected, actual);
-    }
-
-    private static String markNumber(final String numberToMark) {
-        return numberToMark + " " + "marked";
     }
 }
