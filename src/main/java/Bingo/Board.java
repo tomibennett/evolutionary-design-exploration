@@ -15,12 +15,10 @@ class Board {
     }
 
     void mark(final String numberDrawn) {
-        for (int i = 0; i < numbers.length; i++) {
-            if (numberDrawn == numbers[i]) {
-                final var numberToMark = numbers[i];
-                numbers[i] = markNumber(numberToMark);
-            }
-        }
+        this.numbers = Arrays
+            .stream(numbers)
+            .map(number -> number == numberDrawn ? markNumber(numberDrawn) : number)
+            .toList().toArray(new String[0]);
     }
 
     static String markNumber(final String numberToMark) {
