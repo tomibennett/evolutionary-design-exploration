@@ -1,5 +1,7 @@
 package Bingo;
 
+import java.util.Objects;
+
 class BingoNumber {
     private final String number;
 
@@ -11,8 +13,25 @@ class BingoNumber {
         return new BingoNumber(number);
     }
 
+    BingoNumber markNumber() {
+        return fromString(number + " " + "marked");
+    }
+
     @Override
     public String toString() {
         return number;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final BingoNumber that = (BingoNumber) o;
+        return number.equals(that.number);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }

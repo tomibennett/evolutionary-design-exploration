@@ -69,14 +69,14 @@ public class GameTest {
                 .build();
         final var numberDrawn = BingoNumber.fromString("39");
 
-        final var numberMarked = Board.markNumber(numberDrawn.toString());
+        final var numberMarked = numberDrawn.markNumber();
         board.mark(numberDrawn.toString());
 
         final var actual = board;
 
         final var expected =
             new BoardBuilder()
-                .withNumber(BingoNumber.fromString(numberMarked))
+                .withNumber(numberMarked)
                 .build();
 
         assertEquals(expected, actual);
@@ -90,14 +90,14 @@ public class GameTest {
                 .withNumber(BingoNumber.fromString("1234"))
                 .build();
         final var numberDrawn = BingoNumber.fromString("92");
-        final var numberMarked = Board.markNumber(numberDrawn.toString());
+        final var numberMarked = numberDrawn.markNumber();
         board.mark(numberDrawn.toString());
 
         final var actual = board;
 
         final var expected =
             new BoardBuilder()
-                .withNumber(BingoNumber.fromString(numberMarked))
+                .withNumber(numberMarked)
                 .withNumber(BingoNumber.fromString("1234"))
                 .build();
 
@@ -113,7 +113,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = BingoNumber.fromString("26");
 
-        final var numberMarked = Board.markNumber(numberDrawn.toString());
+        final var numberMarked = numberDrawn.markNumber();
         board.mark(numberDrawn.toString());
 
         final var actual = board;
@@ -121,7 +121,7 @@ public class GameTest {
         final var expected =
             new BoardBuilder()
                 .withNumber(BingoNumber.fromString("38"))
-                .withNumber(BingoNumber.fromString(numberMarked))
+                .withNumber(numberMarked)
                 .build();
 
         assertEquals(expected, actual);
@@ -137,14 +137,14 @@ public class GameTest {
                 .build();
         final var numberDrawn = BingoNumber.fromString("23");
 
-        final var numberMarked = Board.markNumber(numberDrawn.toString());
+        final var numberMarked = numberDrawn.markNumber();
         board.mark(numberDrawn.toString());
 
         final var actual = board;
 
         final var expected =
             new BoardBuilder()
-                .withNumber(BingoNumber.fromString(numberMarked))
+                .withNumber(numberMarked)
                 .withNumber(BingoNumber.fromString("85"))
                 .withNumber(BingoNumber.fromString("246"))
                 .build();
@@ -162,7 +162,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = BingoNumber.fromString("85");
 
-        final var numberMarked = Board.markNumber(numberDrawn.toString());
+        final var numberMarked = numberDrawn.markNumber();
         board.mark(numberDrawn.toString());
 
         final var actual = board;
@@ -170,7 +170,7 @@ public class GameTest {
         final var expected =
             new BoardBuilder()
                 .withNumber(BingoNumber.fromString("23"))
-                .withNumber(BingoNumber.fromString(numberMarked))
+                .withNumber(numberMarked)
                 .withNumber(BingoNumber.fromString("246"))
                 .build();
 
@@ -187,7 +187,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = BingoNumber.fromString("246");
 
-        final var numberMarked = Board.markNumber(numberDrawn.toString());
+        final var numberMarked = numberDrawn.markNumber();
         board.mark(numberDrawn.toString());
 
         final var actual = board;
@@ -196,7 +196,7 @@ public class GameTest {
             new BoardBuilder()
                 .withNumber(BingoNumber.fromString("23"))
                 .withNumber(BingoNumber.fromString("85"))
-                .withNumber(BingoNumber.fromString(numberMarked))
+                .withNumber(numberMarked)
                 .build();
 
         assertEquals(expected, actual);
