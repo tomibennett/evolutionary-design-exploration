@@ -17,7 +17,7 @@ class Board {
     void mark(final String numberDrawn) {
         this.numbers = Arrays
             .stream(numbers)
-            .map(number -> number == numberDrawn ? markNumber(numberDrawn) : number)
+            .map(number -> number == numberDrawn ? markNumber(BingoNumber.fromString(number).toString()) : number)
             .toList().toArray(new String[0]);
     }
 
