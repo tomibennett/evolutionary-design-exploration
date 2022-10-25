@@ -70,7 +70,7 @@ public class GameTest {
         final var numberDrawn = BingoNumber.fromString("39");
 
         final var numberMarked = numberDrawn.markNumber();
-        board.mark(numberDrawn.toString());
+        board.mark(numberDrawn);
 
         final var actual = board;
 
@@ -91,7 +91,7 @@ public class GameTest {
                 .build();
         final var numberDrawn = BingoNumber.fromString("92");
         final var numberMarked = numberDrawn.markNumber();
-        board.mark(numberDrawn.toString());
+        board.mark(numberDrawn);
 
         final var actual = board;
 
@@ -114,7 +114,7 @@ public class GameTest {
         final var numberDrawn = BingoNumber.fromString("26");
 
         final var numberMarked = numberDrawn.markNumber();
-        board.mark(numberDrawn.toString());
+        board.mark(numberDrawn);
 
         final var actual = board;
 
@@ -138,7 +138,7 @@ public class GameTest {
         final var numberDrawn = BingoNumber.fromString("23");
 
         final var numberMarked = numberDrawn.markNumber();
-        board.mark(numberDrawn.toString());
+        board.mark(numberDrawn);
 
         final var actual = board;
 
@@ -163,7 +163,7 @@ public class GameTest {
         final var numberDrawn = BingoNumber.fromString("85");
 
         final var numberMarked = numberDrawn.markNumber();
-        board.mark(numberDrawn.toString());
+        board.mark(numberDrawn);
 
         final var actual = board;
 
@@ -188,7 +188,7 @@ public class GameTest {
         final var numberDrawn = BingoNumber.fromString("246");
 
         final var numberMarked = numberDrawn.markNumber();
-        board.mark(numberDrawn.toString());
+        board.mark(numberDrawn);
 
         final var actual = board;
 

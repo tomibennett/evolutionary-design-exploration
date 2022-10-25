@@ -9,7 +9,7 @@ class BingoNumber {
         this.number = number;
     }
 
-    protected static BingoNumber fromString(final String number) {
+    static BingoNumber fromString(final String number) {
         return new BingoNumber(number);
     }
 
