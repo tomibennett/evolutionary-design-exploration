@@ -22,7 +22,7 @@ class Board {
     }
 
     static String markNumber(final String numberToMark) {
-        return numberToMark + " " + "marked";
+        return BingoNumber.fromString(numberToMark + " " + "marked").toString();
     }
 
     @Override

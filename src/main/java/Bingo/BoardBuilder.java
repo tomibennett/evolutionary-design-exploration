@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 class BoardBuilder {
-    private List<String> numbers;
+    private final List<String> numbers;
 
     public BoardBuilder() {
         this.numbers = new ArrayList<>();
     }
 
-    BoardBuilder withNumber(String number) {
-        this.numbers.add(number);
+    BoardBuilder withNumber(BingoNumber number) {
+        this.numbers.add(number.toString());
 
         return this;
     }
