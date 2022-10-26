@@ -17,6 +17,6 @@ class BoardBuilder {
     }
 
     public Board build() {
-        return Board.fromList(bingoNumbers.stream().map(BingoNumber::toString).toList());
+        return Board.fromBingoNumbersList(bingoNumbers);
     }
 }

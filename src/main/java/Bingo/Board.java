@@ -14,6 +14,11 @@ class Board {
         return new Board(numbers.toArray(new String[0]));
     }
 
+    static Board fromBingoNumbersList(final List<BingoNumber> bingoNumbers) {
+        final var numbers = bingoNumbers.stream().map(BingoNumber::toString).toList();
+        return fromList(numbers);
+    }
+
     void mark(final String numberDrawn) {
         this.numbers = Arrays
             .stream(numbers)
