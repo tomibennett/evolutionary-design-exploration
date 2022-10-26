@@ -12,13 +12,16 @@ class Board {
 
     static Board fromList(final List<BingoNumber> bingoNumbers) {
         final var numbers = bingoNumbers.stream().map(BingoNumber::toString).toList();
+
         return new Board(numbers.toArray(new String[0]));
     }
 
-    void mark(final String numberDrawn) {
+    void mark(BingoNumber numberDrawn) {
         this.numbers = Arrays
             .stream(numbers)
-            .map(number -> BingoNumber.getNumber(number) == BingoNumber.getNumber(numberDrawn) ? markNumber(BingoNumber.getNumber(number)) : BingoNumber.getNumber(number))
+            .map(number -> BingoNumber.getNumber(number) == numberDrawn.toString()
+                ? markNumber(BingoNumber.getNumber(number))
+                : BingoNumber.getNumber(number))
             .toList().toArray(new String[0]);
     }
 
