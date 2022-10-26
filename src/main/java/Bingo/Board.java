@@ -20,13 +20,9 @@ class Board {
         this.numbers = Arrays
             .stream(numbers)
             .map(number -> BingoNumber.getNumber(number) == numberDrawn.toString()
-                ? markNumber(BingoNumber.getNumber(number))
+                ? BingoNumber.fromString(number).mark()
                 : BingoNumber.getNumber(number))
             .toList().toArray(new String[0]);
-    }
-
-    static String markNumber(final String numberToMark) {
-        return BingoNumber.getNumber(numberToMark) + " " + "marked";
     }
 
     @Override

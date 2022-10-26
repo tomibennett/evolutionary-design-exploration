@@ -15,6 +15,10 @@ public class BingoNumber {
         return new BingoNumber(number);
     }
 
+    String mark() {
+        return fromString(number + " " + "marked").toString();
+    }
+
     @Override
     public String toString() {
         return number;
