@@ -17,12 +17,12 @@ class Board {
     void mark(final String numberDrawn) {
         this.numbers = Arrays
             .stream(numbers)
-            .map(number -> number == numberDrawn ? markNumber(numberDrawn) : number)
+            .map(number -> BingoNumber.getNumber(number) == BingoNumber.getNumber(numberDrawn) ? markNumber(BingoNumber.getNumber(number)) : BingoNumber.getNumber(number))
             .toList().toArray(new String[0]);
     }
 
     static String markNumber(final String numberToMark) {
-        return numberToMark + " " + "marked";
+        return BingoNumber.getNumber(numberToMark) + " " + "marked";
     }
 
     @Override
