@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 class BoardBuilder {
-    private List<String> numbers;
+    private List<BingoNumber> bingoNumbers;
 
     public BoardBuilder() {
-        this.numbers = new ArrayList<>();
+        this.bingoNumbers = new ArrayList<>();
     }
 
-    BoardBuilder withNumber(String number) {
-        this.numbers.add(number);
+    BoardBuilder withNumber(BingoNumber number) {
+        this.bingoNumbers.add(number);
 
         return this;
     }
 
     public Board build() {
-        return Board.fromList(numbers);
+        return Board.fromList(bingoNumbers.stream().map(BingoNumber::toString).toList());
     }
 }
