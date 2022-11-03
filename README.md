@@ -23,7 +23,7 @@ This example uses a kind of a bingo game. [Advent of Code's day 4: Giant Squid](
 # Resources
 In it's [TDD as If You Meant It](https://cumulative-hypotheses.org/2011/08/30/tdd-as-if-you-meant-it/) article, Keith Braithwaite explains how TDD is often misused and provides a way of doing using other steps that does not lead to the same mistakes. It's like a first step towards evolutionary design as a discipline.
 
-Rading Cyrille Martaire's blog article [Adrian Bolboaca on Evolutionary Design](https://medium.com/@cyrillemartraire/adrian-bolboaca-on-evolutionary-design-inductive-vs-deductive-approaches-a7cead4bdd20) summarize Adrian Bolboaca meetup on Evolutionary Design. It's a great resource to better understand inductive and deductive approaches as well as having a glimpse of the methodology processes themselves.
+Cyrille Martaire's blog article [Adrian Bolboaca on Evolutionary Design](https://medium.com/@cyrillemartraire/adrian-bolboaca-on-evolutionary-design-inductive-vs-deductive-approaches-a7cead4bdd20) summarizes Adrian Bolboaca meetup on Evolutionary Design. It's a great resource to better understand inductive and deductive approaches as well as having a glimpse of the methodology processes themselves.
 
  Bob Martin's blog article [Transformation Priority Premise](https://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html) introduces transformations (changes in code that occur outside of the refactoring part) and show how it can help better conduct changes.
 
