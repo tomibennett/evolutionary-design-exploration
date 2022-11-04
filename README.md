@@ -9,16 +9,16 @@ Most of the time, we are writing code doing both of these activities at the same
 
 The underlying reasoning on whose these activities are based are called **deductive** and **inductive** approaches.
 
-Mixing those two, have certain advantage, like going faster, but also have some cost.
+Mixing those two have certain advantage, like going faster, but also have some costs.
 
-Not only the written design is bound to previous mental models that we have met on previous codebases, i.e. our own experience, instead of being purely organic (i.e. related to the domain), but more importantly, this leads to conduct design decision more with an opinion based than with factuals (thus observable), and rational elements.
+Not only the written design is bound to previous mental models that we have met on previous codebases, i.e. our own experience, instead of being purely organic (i.e. related only to the domain and implemented behavior), but more importantly, this leads to design to be made more with opinion based decisions than with facts (thus observable elements) and proofs.
 
-In other word, this methodoloy helps writing source code by rely most exclusively on the **inductive approach**.
+In other word, this methodoloy helps writing source code relying most exclusively on the **inductive approach**.
 
-Surely, this is nothing new for someone with a TDD background, but! This method goes way further and maybe (surely) it not (yet) stamped "production ready", it does worth being discovered and played with, if only to better undersand our evolved apes decision making processes and better apprehend the great complexity of it; as well as going slowly and learn ways and techniques to better evolve the design of our code base.
+Surely, this is nothing new for someone with a TDD background, but! This method goes way further and maybe (surely) it not (yet) stamped "production ready", it does worth being discovered and played with, if only to better undersand our evolved apes decision making processes and better apprehend the great complexity of it; as well as going slowly and learn ways and techniques to better evolve the design of our code bases.
 
 
-Hopefully, this litte introduction will make you want to know more, if so, look just below, is a collection of resources gathered during my exploration.
+Hopefully, this introduction will make you want to know more. If so, look just below, it's a collection of resources gathered during my exploration.
 
 ## More on this repository
 This repository is my exploration on this methodology.
