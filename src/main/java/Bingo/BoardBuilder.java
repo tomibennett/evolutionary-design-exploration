@@ -2,7 +2,6 @@ package Bingo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 class BoardBuilder {
     private final List<BingoNumber> bingoNumbers;
@@ -18,14 +17,7 @@ class BoardBuilder {
     }
 
     public Board build() {
-        return Board.fromList(getNumbers());
-    }
-
-    private List<String> getNumbers() {
-        return bingoNumbers
-            .stream()
-            .map(BingoNumber::toString)
-            .collect(Collectors.toList());
+        return Board.fromList(bingoNumbers);
     }
 
 }

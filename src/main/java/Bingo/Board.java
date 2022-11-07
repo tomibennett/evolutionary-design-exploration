@@ -4,23 +4,24 @@ import java.util.Arrays;
 import java.util.List;
 
 class Board {
-    private String[] numbers;
+    private BingoNumber[] numbers;
 
-    Board(String[] numbers) {
+    Board(BingoNumber[] numbers) {
         this.numbers = numbers;
     }
 
-    static Board fromList(final List<String> numbers) {
-        return new Board(numbers.toArray(new String[0]));
+    static Board fromList(final List<BingoNumber> numbers) {
+        return new Board(numbers.toArray(new BingoNumber[0]));
     }
 
     void mark(final BingoNumber numberDrawn) {
         numbers = Arrays
             .stream(numbers)
-            .map(number -> BingoNumber.fromString(number).equals(numberDrawn)
-                ? BingoNumber.fromString(number).markNumber().toString()
+            .map(number -> number.equals(numberDrawn)
+                ? number.markNumber()
                 : number)
-            .toList().toArray(new String[0]);
+            .toList()
+            .toArray(new BingoNumber[0]);
     }
 
     @Override
