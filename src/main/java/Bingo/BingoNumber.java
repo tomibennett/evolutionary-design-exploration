@@ -13,7 +13,7 @@ class BingoNumber {
         return new BingoNumber(number);
     }
 
-    BingoNumber markNumber() {
+    BingoNumber mark() {
         return fromString(number + " " + "marked");
     }
 
