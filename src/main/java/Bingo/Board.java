@@ -10,12 +10,12 @@ class Board {
         this.numbers = numbers;
     }
 
-    static Board fromList(List<String> numbers) {
+    static Board fromList(final List<String> numbers) {
         return new Board(numbers.toArray(new String[0]));
     }
 
     void mark(final BingoNumber numberDrawn) {
-        this.numbers = Arrays
+        numbers = Arrays
             .stream(numbers)
             .map(number -> BingoNumber.fromString(number).equals(numberDrawn)
                 ? BingoNumber.fromString(number).markNumber().toString()
