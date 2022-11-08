@@ -23,8 +23,8 @@ public class GameTest {
             .build();
 
         final var expected = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("3"))
-                .build();
+            .withNumber(BingoNumber.fromString("3"))
+            .build();
 
         assertEquals(expected, board);
     }
@@ -66,15 +66,15 @@ public class GameTest {
     @Test
     void onAOneNumberBoardTheNumberDrawnIsPresentOnTheBoardThenItIsMarked() {
         final var board = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("39"))
-                .build();
+            .withNumber(BingoNumber.fromString("39"))
+            .build();
         final var numberDrawn = BingoNumber.fromString("39");
 
         board.mark(numberDrawn);
 
         final var expected = new BoardBuilder()
-                .withNumber(numberDrawn.mark())
-                .build();
+            .withNumber(numberDrawn.mark())
+            .build();
 
         assertEquals(expected, board);
     }
@@ -82,17 +82,17 @@ public class GameTest {
     @Test
     void onATwoNumberBoardTheNumberDrawnIsPresentAtFirstPositionOnTheBoardThenItIsMarked() {
         final var board = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("92"))
-                .withNumber(BingoNumber.fromString("1234"))
-                .build();
+            .withNumber(BingoNumber.fromString("92"))
+            .withNumber(BingoNumber.fromString("1234"))
+            .build();
         final var numberDrawn = BingoNumber.fromString("92");
 
         board.mark(numberDrawn);
 
         final var expected = new BoardBuilder()
-                .withNumber(numberDrawn.mark())
-                .withNumber(BingoNumber.fromString("1234"))
-                .build();
+            .withNumber(numberDrawn.mark())
+            .withNumber(BingoNumber.fromString("1234"))
+            .build();
 
         assertEquals(expected, board);
     }
@@ -100,17 +100,17 @@ public class GameTest {
     @Test
     void onATwoNumberBoardTheNumberDrawnIsPresentAtSecondPositionOnTheBoardThenItIsMarked() {
         final var board = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("38"))
-                .withNumber(BingoNumber.fromString("26"))
-                .build();
+            .withNumber(BingoNumber.fromString("38"))
+            .withNumber(BingoNumber.fromString("26"))
+            .build();
         final var numberDrawn = BingoNumber.fromString("26");
 
         board.mark(numberDrawn);
 
         final var expected = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("38"))
-                .withNumber(numberDrawn.mark())
-                .build();
+            .withNumber(BingoNumber.fromString("38"))
+            .withNumber(numberDrawn.mark())
+            .build();
 
         assertEquals(expected, board);
     }
@@ -118,19 +118,19 @@ public class GameTest {
     @Test
     void onAThreeNumberBoardTheNumberDrawnIsPresentAtFirstPositionOnTheBoardThenItIsMarked() {
         final var board = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("23"))
-                .withNumber(BingoNumber.fromString("85"))
-                .withNumber(BingoNumber.fromString("246"))
-                .build();
+            .withNumber(BingoNumber.fromString("23"))
+            .withNumber(BingoNumber.fromString("85"))
+            .withNumber(BingoNumber.fromString("246"))
+            .build();
         final var numberDrawn = BingoNumber.fromString("23");
 
         board.mark(numberDrawn);
 
         final var expected = new BoardBuilder()
-                .withNumber(numberDrawn.mark())
-                .withNumber(BingoNumber.fromString("85"))
-                .withNumber(BingoNumber.fromString("246"))
-                .build();
+            .withNumber(numberDrawn.mark())
+            .withNumber(BingoNumber.fromString("85"))
+            .withNumber(BingoNumber.fromString("246"))
+            .build();
 
         assertEquals(expected, board);
     }
@@ -138,19 +138,19 @@ public class GameTest {
     @Test
     void onAThreeNumberBoardTheNumberDrawnIsPresentAtSecondPositionOnTheBoardThenItIsMarked() {
         final var board = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("23"))
-                .withNumber(BingoNumber.fromString("85"))
-                .withNumber(BingoNumber.fromString("246"))
-                .build();
+            .withNumber(BingoNumber.fromString("23"))
+            .withNumber(BingoNumber.fromString("85"))
+            .withNumber(BingoNumber.fromString("246"))
+            .build();
         final var numberDrawn = BingoNumber.fromString("85");
 
         board.mark(numberDrawn);
 
         final var expected = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("23"))
-                .withNumber(numberDrawn.mark())
-                .withNumber(BingoNumber.fromString("246"))
-                .build();
+            .withNumber(BingoNumber.fromString("23"))
+            .withNumber(numberDrawn.mark())
+            .withNumber(BingoNumber.fromString("246"))
+            .build();
 
         assertEquals(expected, board);
     }
@@ -158,19 +158,19 @@ public class GameTest {
     @Test
     void onAThreeNumberBoardTheNumberDrawnIsPresentAtThirdPositionOnTheBoardThenItIsMarked() {
         final var board = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("23"))
-                .withNumber(BingoNumber.fromString("85"))
-                .withNumber(BingoNumber.fromString("246"))
-                .build();
+            .withNumber(BingoNumber.fromString("23"))
+            .withNumber(BingoNumber.fromString("85"))
+            .withNumber(BingoNumber.fromString("246"))
+            .build();
         final var numberDrawn = BingoNumber.fromString("246");
 
         board.mark(numberDrawn);
 
         final var expected = new BoardBuilder()
-                .withNumber(BingoNumber.fromString("23"))
-                .withNumber(BingoNumber.fromString("85"))
-                .withNumber(numberDrawn.mark())
-                .build();
+            .withNumber(BingoNumber.fromString("23"))
+            .withNumber(BingoNumber.fromString("85"))
+            .withNumber(numberDrawn.mark())
+            .build();
 
         assertEquals(expected, board);
     }
@@ -186,6 +186,25 @@ public class GameTest {
         final var expected = "board wins";
 
         final var actual = board.equals(board) ? "board wins" : "board looses";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void aThreeNumbersBoardWithTwoMarkedNumberOnTwoColumnsLooses() {
+        final var board = new BoardBuilder()
+            .withNumber(BingoNumber.fromString("23").mark())
+            .withNumber(BingoNumber.fromString("85").mark())
+            .withNumber(BingoNumber.fromString("85"))
+            .build();
+
+        final var expected = "board looses";
+
+        final var actual =
+            board.equals(board)
+                && board.numbers[2].toString().contains("marked")
+                ? "board wins"
+                : "board looses";
 
         assertEquals(expected, actual);
     }
