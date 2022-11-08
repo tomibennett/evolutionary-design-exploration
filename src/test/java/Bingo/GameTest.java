@@ -175,5 +175,22 @@ public class GameTest {
         assertEquals(expected, board);
     }
 
+    // introducing winning
+    @Test
+    void onATwoNumbersBoardWithAMarkedNumberOnTwoColumnsThenItWins() {
+        final var board = new BoardBuilder()
+            .withNumber(BingoNumber.fromString("23").mark())
+            .withNumber(BingoNumber.fromString("85").mark())
+            .build();
 
+        final var expected = "board wins";
+
+        final var actual =
+            board.numbers[0].equals(BingoNumber.fromString("23").mark())
+            && board.numbers[1].equals(BingoNumber.fromString("85").mark())
+            ? "board wins"
+            : "board looses";
+
+        assertEquals(expected, actual);
+    }
 }

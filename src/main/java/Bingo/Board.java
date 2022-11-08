@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 class Board {
-    private BingoNumber[] numbers;
+    BingoNumber[] numbers;
 
     Board(BingoNumber[] numbers) {
         this.numbers = numbers;
