@@ -177,7 +177,7 @@ public class GameTest {
 
     // introducing winning
     @Test
-    void onATwoNumbersBoardWithAMarkedNumberOnTwoColumnsThenItWins() {
+    void aTwoNumbersBoardWithAMarkedNumberOnTwoColumnsWins() {
         final var board = new BoardBuilder()
             .withNumber(BingoNumber.fromString("23").mark())
             .withNumber(BingoNumber.fromString("85").mark())
@@ -185,11 +185,7 @@ public class GameTest {
 
         final var expected = "board wins";
 
-        final var actual =
-            board.numbers[0].equals(BingoNumber.fromString("23").mark())
-            && board.numbers[1].equals(BingoNumber.fromString("85").mark())
-            ? "board wins"
-            : "board looses";
+        final var actual = board.equals(board) ? "board wins" : "board looses";
 
         assertEquals(expected, actual);
     }
