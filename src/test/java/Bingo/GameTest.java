@@ -208,4 +208,21 @@ public class GameTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void aOneNumberBoardWithOneMarkedNumberWins() {
+        final var board = new BoardBuilder()
+            .withNumber(BingoNumber.fromString("23").mark())
+            .build();
+
+        final var expected = "board wins";
+
+        final var actual =
+            board.equals(board)
+                && board.numbers[0].toString().contains("marked")
+                ? "board wins"
+                : "board looses";
+
+        assertEquals(expected, actual);
+    }
 }
