@@ -177,7 +177,7 @@ public class GameTest {
 
     // introducing winning
     @Test
-    void aTwoNumbersBoardWithAMarkedNumberOnTwoColumnsWins() {
+    void aTwoNumbersBoardWithTwoMarkedNumberWins() {
         final var board = new BoardBuilder()
             .withNumber(BingoNumber.fromString("23").mark())
             .withNumber(BingoNumber.fromString("85").mark())
@@ -191,7 +191,7 @@ public class GameTest {
     }
 
     @Test
-    void aThreeNumbersBoardWithTwoMarkedNumberOnTwoColumnsLooses() {
+    void aThreeNumbersBoardWithTwoMarkedNumberLooses() {
         final var board = new BoardBuilder()
             .withNumber(BingoNumber.fromString("23").mark())
             .withNumber(BingoNumber.fromString("85").mark())
