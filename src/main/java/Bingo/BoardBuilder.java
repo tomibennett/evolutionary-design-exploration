@@ -19,5 +19,4 @@ class BoardBuilder {
     public Board build() {
         return Board.fromList(bingoNumbers);
     }
-
 }

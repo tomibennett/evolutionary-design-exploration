@@ -17,9 +17,7 @@ class Board {
     void mark(final BingoNumber numberDrawn) {
         numbers = Arrays
             .stream(numbers)
-            .map(number -> number.equals(numberDrawn)
-                ? number.mark()
-                : number)
+            .map(number -> number.equals(numberDrawn) ? number.mark() : number)
             .toList()
             .toArray(new BingoNumber[0]);
     }
