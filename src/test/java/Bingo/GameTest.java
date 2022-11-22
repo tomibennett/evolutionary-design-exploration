@@ -236,7 +236,7 @@ public class GameTest {
 
         final var expected = getMessageBoardLooses(boardMessagePrelude, sep);
 
-        final var isBoardOfLengthOne = board.numbers.length == 1;
+        final var isBoardOfLengthOne = isBoardOfLength(board, 1);
         final var isFirstNumberMarked = board.numbers[0].toString().contains("marked");
 
         final var actual =
@@ -259,8 +259,8 @@ public class GameTest {
 
         final var expected = getMessageBoardWins(boardMessagePrelude, sep);
 
-        final var isBoardOfLengthOne = board.numbers.length == 1;
-        final var isBoardOfLengthTwo = board.numbers.length == 2;
+        final var isBoardOfLengthOne = isBoardOfLength(board, 1);
+        final var isBoardOfLengthTwo = isBoardOfLength(board, 2);
         final var isFirstNumberMarked = board.numbers[0].toString().contains("marked");
         final var isSecondNumberMarked = board.numbers[1].toString().contains("marked");
 
@@ -271,6 +271,10 @@ public class GameTest {
                 : getMessageBoardLooses(boardMessagePrelude, sep);
 
         assertEquals(expected, actual);
+    }
+
+    private static boolean isBoardOfLength(final Board board, final int length) {
+        return board.numbers.length == length;
     }
 
     private static String getMessageBoardWins(final String boardMessagePrelude, final String sep) {
