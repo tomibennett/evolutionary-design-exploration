@@ -191,7 +191,7 @@ public class GameTest {
 
         final var expected = getMessageBoardLooses(boardMessagePrelude, sep);
 
-        final var isThirdNumberMarked = board.numbers[2].toString().contains("marked");
+        final var isThirdNumberMarked = isNumberMarked(board, 2);
 
         final var actual =
             isThirdNumberMarked
@@ -213,7 +213,7 @@ public class GameTest {
 
         final var expected = getMessageBoardWins(boardMessagePrelude, sep);
 
-        final var isFirstNumberMarked = board.numbers[0].toString().contains("marked");
+        final var isFirstNumberMarked = isNumberMarked(board, 0);
 
         final var actual =
             isFirstNumberMarked
@@ -236,11 +236,8 @@ public class GameTest {
 
         final var expected = getMessageBoardLooses(boardMessagePrelude, sep);
 
-        final var isBoardOfLengthOne = isBoardOfLength(board, 1);
-        final var isFirstNumberMarked = board.numbers[0].toString().contains("marked");
-
         final var actual =
-            isBoardOfLengthOne && isFirstNumberMarked
+            areAllNumbersMarkedInAOneNumberBoard(board)
                 ? getMessageBoardWins(boardMessagePrelude, sep)
                 : getMessageBoardLooses(boardMessagePrelude, sep);
 
@@ -259,18 +256,26 @@ public class GameTest {
 
         final var expected = getMessageBoardWins(boardMessagePrelude, sep);
 
-        final var isBoardOfLengthOne = isBoardOfLength(board, 1);
-        final var isBoardOfLengthTwo = isBoardOfLength(board, 2);
-        final var isFirstNumberMarked = board.numbers[0].toString().contains("marked");
-        final var isSecondNumberMarked = board.numbers[1].toString().contains("marked");
-
         final var actual =
-            (isBoardOfLengthOne && isFirstNumberMarked)
-                || (isBoardOfLengthTwo && isFirstNumberMarked && isSecondNumberMarked)
+            areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
                 ? getMessageBoardWins(boardMessagePrelude, sep)
                 : getMessageBoardLooses(boardMessagePrelude, sep);
 
         assertEquals(expected, actual);
+    }
+
+    private static boolean areAllNumbersMarkedInATwoNumbersBoard(final Board board) {
+        return isBoardOfLength(board, 2)
+            && isNumberMarked(board, 0)
+            && isNumberMarked(board, 1);
+    }
+
+    private static boolean areAllNumbersMarkedInAOneNumberBoard(final Board board) {
+        return isBoardOfLength(board, 1) && isNumberMarked(board, 0);
+    }
+
+    private static boolean isNumberMarked(final Board board, final int numberPosition) {
+        return board.numbers[numberPosition].toString().contains("marked");
     }
 
     private static boolean isBoardOfLength(final Board board, final int length) {
