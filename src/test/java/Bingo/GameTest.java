@@ -236,11 +236,11 @@ public class GameTest {
 
         final var expected = getMessageBoardLooses(boardMessagePrelude, sep);
 
+        final var isBoardOfLengthOne = board.numbers.length == 1;
         final var isFirstNumberMarked = board.numbers[0].toString().contains("marked");
 
         final var actual =
-            board.numbers.length == 1
-                && isFirstNumberMarked
+            isBoardOfLengthOne && isFirstNumberMarked
                 ? getMessageBoardWins(boardMessagePrelude, sep)
                 : getMessageBoardLooses(boardMessagePrelude, sep);
 
@@ -259,12 +259,14 @@ public class GameTest {
 
         final var expected = getMessageBoardWins(boardMessagePrelude, sep);
 
+        final var isBoardOfLengthOne = board.numbers.length == 1;
+        final var isBoardOfLengthTwo = board.numbers.length == 2;
         final var isFirstNumberMarked = board.numbers[0].toString().contains("marked");
         final var isSecondNumberMarked = board.numbers[1].toString().contains("marked");
 
         final var actual =
-            (board.numbers.length == 1 && isFirstNumberMarked)
-                || (board.numbers.length == 2 && isFirstNumberMarked && isSecondNumberMarked)
+            (isBoardOfLengthOne && isFirstNumberMarked)
+                || (isBoardOfLengthTwo && isFirstNumberMarked && isSecondNumberMarked)
                 ? getMessageBoardWins(boardMessagePrelude, sep)
                 : getMessageBoardLooses(boardMessagePrelude, sep);
 
