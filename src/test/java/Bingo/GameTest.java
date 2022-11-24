@@ -185,8 +185,6 @@ public class GameTest {
             .build();
 
 
-        final var expected = BoardMessage.looses();
-
         final var isThirdNumberMarked = isNumberMarked(board, 2);
 
         final var actual =
@@ -194,7 +192,7 @@ public class GameTest {
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
-        assertEquals(expected, actual);
+        assertEquals(BoardMessage.looses(), actual);
     }
 
     @Test
@@ -203,8 +201,6 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("23").mark())
             .build();
 
-        final var expected = BoardMessage.wins();
-
         final var isFirstNumberMarked = isNumberMarked(board, 0);
 
         final var actual =
@@ -212,7 +208,7 @@ public class GameTest {
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
-        assertEquals(expected, actual);
+        assertEquals(BoardMessage.wins(), actual);
     }
 
     @Test
@@ -222,14 +218,12 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135"))
             .build();
 
-        final var expected = BoardMessage.looses();
-
         final var actual =
             areAllNumbersMarkedInAOneNumberBoard(board)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
-        assertEquals(expected, actual);
+        assertEquals(BoardMessage.looses(), actual);
     }
 
     @Test
@@ -240,14 +234,13 @@ public class GameTest {
             .build();
 
         // better handle prelude construction here
-        final var expected = BoardMessage.wins();
 
         final var actual =
             areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
-        assertEquals(expected, actual);
+        assertEquals(BoardMessage.wins(), actual);
     }
 
     private static boolean areAllNumbersMarkedInATwoNumbersBoard(final Board board) {
