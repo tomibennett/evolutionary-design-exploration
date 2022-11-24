@@ -185,14 +185,14 @@ public class GameTest {
             .build();
 
 
-        final var expected = getBoardLoosesMessage();
+        final var expected = BoardMessage.looses();
 
         final var isThirdNumberMarked = isNumberMarked(board, 2);
 
         final var actual =
             isThirdNumberMarked
-                ? getBoardWinsMessage()
-                : getBoardLoosesMessage();
+                ? BoardMessage.wins()
+                : BoardMessage.looses();
 
         assertEquals(expected, actual);
     }
@@ -203,14 +203,14 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("23").mark())
             .build();
 
-        final var expected = getBoardWinsMessage();
+        final var expected = BoardMessage.wins();
 
         final var isFirstNumberMarked = isNumberMarked(board, 0);
 
         final var actual =
             isFirstNumberMarked
-                ? getBoardWinsMessage()
-                : getBoardLoosesMessage();
+                ? BoardMessage.wins()
+                : BoardMessage.looses();
 
         assertEquals(expected, actual);
     }
@@ -222,12 +222,12 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135"))
             .build();
 
-        final var expected = getBoardLoosesMessage();
+        final var expected = BoardMessage.looses();
 
         final var actual =
             areAllNumbersMarkedInAOneNumberBoard(board)
-                ? getBoardWinsMessage()
-                : getBoardLoosesMessage();
+                ? BoardMessage.wins()
+                : BoardMessage.looses();
 
         assertEquals(expected, actual);
     }
@@ -240,30 +240,14 @@ public class GameTest {
             .build();
 
         // better handle prelude construction here
-        final var expected = getBoardWinsMessage();
+        final var expected = BoardMessage.wins();
 
         final var actual =
             areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
-                ? getBoardWinsMessage()
-                : getBoardLoosesMessage();
+                ? BoardMessage.wins()
+                : BoardMessage.looses();
 
         assertEquals(expected, actual);
-    }
-
-    private static String getSep() {
-        return " ";
-    }
-
-    private static String getBoardMessagePrelude() {
-        return "board";
-    }
-
-    private static String getBoardLoosesMessage() {
-        return getBoardMessagePrelude() + getSep() + "looses";
-    }
-
-    private static String getBoardWinsMessage() {
-        return getBoardMessagePrelude() + getSep() + "wins";
     }
 
     private static boolean areAllNumbersMarkedInATwoNumbersBoard(final Board board) {
