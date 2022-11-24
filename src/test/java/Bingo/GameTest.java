@@ -1,6 +1,5 @@
 package Bingo;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -186,17 +185,14 @@ public class GameTest {
             .build();
 
 
-        final var boardMessagePrelude = "board";
-        final var sep = " ";
-
-        final var expected = getMessageBoardLooses(boardMessagePrelude, sep);
+        final var expected = getBoardLoosesMessage();
 
         final var isThirdNumberMarked = isNumberMarked(board, 2);
 
         final var actual =
             isThirdNumberMarked
-                ? getMessageBoardWins(boardMessagePrelude, sep)
-                : getMessageBoardLooses(boardMessagePrelude, sep);
+                ? getBoardWinsMessage()
+                : getBoardLoosesMessage();
 
         assertEquals(expected, actual);
     }
@@ -207,18 +203,14 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("23").mark())
             .build();
 
-
-        final var boardMessagePrelude = "board";
-        final var sep = " ";
-
-        final var expected = getMessageBoardWins(boardMessagePrelude, sep);
+        final var expected = getBoardWinsMessage();
 
         final var isFirstNumberMarked = isNumberMarked(board, 0);
 
         final var actual =
             isFirstNumberMarked
-                ? getMessageBoardWins(boardMessagePrelude, sep)
-                : getMessageBoardLooses(boardMessagePrelude, sep);
+                ? getBoardWinsMessage()
+                : getBoardLoosesMessage();
 
         assertEquals(expected, actual);
     }
@@ -230,16 +222,12 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135"))
             .build();
 
-
-        final var boardMessagePrelude = "board";
-        final var sep = " ";
-
-        final var expected = getMessageBoardLooses(boardMessagePrelude, sep);
+        final var expected = getBoardLoosesMessage();
 
         final var actual =
             areAllNumbersMarkedInAOneNumberBoard(board)
-                ? getMessageBoardWins(boardMessagePrelude, sep)
-                : getMessageBoardLooses(boardMessagePrelude, sep);
+                ? getBoardWinsMessage()
+                : getBoardLoosesMessage();
 
         assertEquals(expected, actual);
     }
@@ -251,17 +239,31 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135").mark())
             .build();
 
-        final var boardMessagePrelude = "board";
-        final var sep = " ";
-
-        final var expected = getMessageBoardWins(boardMessagePrelude, sep);
+        // better handle prelude construction here
+        final var expected = getBoardWinsMessage();
 
         final var actual =
             areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
-                ? getMessageBoardWins(boardMessagePrelude, sep)
-                : getMessageBoardLooses(boardMessagePrelude, sep);
+                ? getBoardWinsMessage()
+                : getBoardLoosesMessage();
 
         assertEquals(expected, actual);
+    }
+
+    private static String getSep() {
+        return " ";
+    }
+
+    private static String getBoardMessagePrelude() {
+        return "board";
+    }
+
+    private static String getBoardLoosesMessage() {
+        return getBoardMessagePrelude() + getSep() + "looses";
+    }
+
+    private static String getBoardWinsMessage() {
+        return getBoardMessagePrelude() + getSep() + "wins";
     }
 
     private static boolean areAllNumbersMarkedInATwoNumbersBoard(final Board board) {
@@ -282,11 +284,4 @@ public class GameTest {
         return board.numbers.length == length;
     }
 
-    private static String getMessageBoardWins(final String boardMessagePrelude, final String sep) {
-        return boardMessagePrelude + sep + "wins";
-    }
-
-    private static String getMessageBoardLooses(final String boardMessagePrelude, final String sep) {
-        return boardMessagePrelude + sep + "looses";
-    }
 }
