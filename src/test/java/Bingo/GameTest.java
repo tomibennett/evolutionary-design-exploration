@@ -260,5 +260,4 @@ public class GameTest {
     private static boolean isBoardOfLength(final Board board, final int length) {
         return board.numbers.length == length;
     }
-
 }

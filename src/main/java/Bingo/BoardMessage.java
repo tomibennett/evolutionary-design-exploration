@@ -12,14 +12,14 @@ public class BoardMessage {
     }
 
     static String looses() {
-        return new BoardMessage(LOOSES).buildMessage();
+        return new BoardMessage(LOOSES).build();
     }
 
     static String wins() {
-        return new BoardMessage(WINS).buildMessage();
+        return new BoardMessage(WINS).build();
     }
 
-    private String buildMessage() {
+    private String build() {
         return BOARD + SEPARATOR + this.status;
     }
 }
