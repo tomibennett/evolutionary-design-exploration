@@ -184,10 +184,8 @@ public class GameTest {
             .build();
 
 
-        final var isThirdNumberMarked = isNumberMarkedAt(board, 2);
-
         final var actual =
-            isThirdNumberMarked
+            isNumberMarkedAt(board, 2)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -199,10 +197,8 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("23").mark())
             .build();
 
-        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
-
         final var actual =
-            isFirstNumberMarked
+            isNumberMarkedAt(board, 0)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -217,7 +213,7 @@ public class GameTest {
             .build();
 
         final var actual =
-            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0)
+            isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 1)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -232,9 +228,8 @@ public class GameTest {
             .build();
 
         final var actual =
-            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
-                && isNumberMarkedAt(board, 0)
-                && isNumberMarkedAt(board, 1)
+            isNumberMarkedAt(board, 0)
+                || isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 1)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -250,9 +245,8 @@ public class GameTest {
             .build();
 
         final var actual =
-            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
-                && isNumberMarkedAt(board, 0)
-                && isNumberMarkedAt(board, 1)
+             isNumberMarkedAt(board, 0)
+                 || isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 1)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -269,10 +263,9 @@ public class GameTest {
             .build();
 
         final var actual =
-            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
-                && isNumberMarkedAt(board, 0)
-                && isNumberMarkedAt(board, 1) ||
-                isNumberMarkedAt(board, 2)
+            isNumberMarkedAt(board, 0)
+                || isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 1)
+                || isNumberMarkedAt(board, 2)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -287,11 +280,13 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("84").mark())
             .build();
 
+        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
+        final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
+
         final var actual =
-            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
-                && isNumberMarkedAt(board, 0)
-                && isNumberMarkedAt(board, 1) ||
-                (isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 2))
+            isFirstNumberMarked
+                || (isFirstNumberMarked && isSecondNumberMarked)
+                || (isFirstNumberMarked && isNumberMarkedAt(board, 2))
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
