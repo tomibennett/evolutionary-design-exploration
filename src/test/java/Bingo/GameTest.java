@@ -28,7 +28,6 @@ public class GameTest {
 
         assertEquals(expected, board);
     }
-
     @Test
     void boardWithNumber3And66IsBoardWithNumber3And66() {
 
@@ -185,7 +184,7 @@ public class GameTest {
             .build();
 
 
-        final var isThirdNumberMarked = isNumberMarked(board, 2);
+        final var isThirdNumberMarked = isNumberMarkedAt(board, 2);
 
         final var actual =
             isThirdNumberMarked
@@ -194,14 +193,13 @@ public class GameTest {
 
         assertEquals(BoardMessage.looses(), actual);
     }
-
     @Test
     void aOneNumberBoardWithOneMarkedNumberWins() {
         final var board = new BoardBuilder()
             .withNumber(BingoNumber.fromString("23").mark())
             .build();
 
-        final var isFirstNumberMarked = isNumberMarked(board, 0);
+        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
 
         final var actual =
             isFirstNumberMarked
@@ -233,8 +231,6 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135").mark())
             .build();
 
-        // better handle prelude construction here
-
         final var actual =
             areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
                 ? BoardMessage.wins()
@@ -243,21 +239,21 @@ public class GameTest {
         assertEquals(BoardMessage.wins(), actual);
     }
 
-    private static boolean areAllNumbersMarkedInATwoNumbersBoard(final Board board) {
-        return isBoardOfLength(board, 2)
-            && isNumberMarked(board, 0)
-            && isNumberMarked(board, 1);
-    }
-
-    private static boolean areAllNumbersMarkedInAOneNumberBoard(final Board board) {
-        return isBoardOfLength(board, 1) && isNumberMarked(board, 0);
-    }
-
-    private static boolean isNumberMarked(final Board board, final int numberPosition) {
-        return board.numbers[numberPosition].toString().contains("marked");
+    static boolean isNumberMarkedAt(final Board board, final int index) {
+        return board.numbers[index].toString().contains("marked");
     }
 
     private static boolean isBoardOfLength(final Board board, final int length) {
         return board.numbers.length == length;
+    }
+
+    private static boolean areAllNumbersMarkedInATwoNumbersBoard(final Board board) {
+        return isBoardOfLength(board, 2)
+            && isNumberMarkedAt(board, 0)
+            && isNumberMarkedAt(board, 1);
+    }
+
+    private static boolean areAllNumbersMarkedInAOneNumberBoard(final Board board) {
+        return isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0);
     }
 }
