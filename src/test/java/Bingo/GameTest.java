@@ -217,7 +217,7 @@ public class GameTest {
             .build();
 
         final var actual =
-            areAllNumbersMarkedInAOneNumberBoard(board)
+            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -232,7 +232,9 @@ public class GameTest {
             .build();
 
         final var actual =
-            areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
+            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
+                && isNumberMarkedAt(board, 0)
+                && isNumberMarkedAt(board, 1)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -248,7 +250,9 @@ public class GameTest {
             .build();
 
         final var actual =
-            areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
+            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
+                && isNumberMarkedAt(board, 0)
+                && isNumberMarkedAt(board, 1)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
 
@@ -265,7 +269,9 @@ public class GameTest {
             .build();
 
         final var actual =
-            areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board) ||
+            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
+                && isNumberMarkedAt(board, 0)
+                && isNumberMarkedAt(board, 1) ||
                 isNumberMarkedAt(board, 2)
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
@@ -282,7 +288,9 @@ public class GameTest {
             .build();
 
         final var actual =
-            areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board) ||
+            isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0) || isBoardOfLength(board, 2)
+                && isNumberMarkedAt(board, 0)
+                && isNumberMarkedAt(board, 1) ||
                 (isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 2))
                 ? BoardMessage.wins()
                 : BoardMessage.looses();
@@ -298,13 +306,4 @@ public class GameTest {
         return board.numbers.length == length;
     }
 
-    private static boolean areAllNumbersMarkedInATwoNumbersBoard(final Board board) {
-        return isBoardOfLength(board, 2)
-            && isNumberMarkedAt(board, 0)
-            && isNumberMarkedAt(board, 1);
-    }
-
-    private static boolean areAllNumbersMarkedInAOneNumberBoard(final Board board) {
-        return isBoardOfLength(board, 1) && isNumberMarkedAt(board, 0);
-    }
 }
