@@ -239,6 +239,22 @@ public class GameTest {
         assertEquals(BoardMessage.wins(), actual);
     }
 
+    @Test
+    void aThreeNumbersBoardWithTwoMarkedNumbersLooses() {
+        final var board = new BoardBuilder()
+            .withNumber(BingoNumber.fromString("23").mark())
+            .withNumber(BingoNumber.fromString("135").mark())
+            .withNumber(BingoNumber.fromString("84"))
+            .build();
+
+        final var actual =
+            areAllNumbersMarkedInAOneNumberBoard(board) || areAllNumbersMarkedInATwoNumbersBoard(board)
+                ? BoardMessage.wins()
+                : BoardMessage.looses();
+
+        assertEquals(BoardMessage.looses(), actual);
+    }
+
     static boolean isNumberMarkedAt(final Board board, final int index) {
         return board.numbers[index].toString().contains("marked");
     }
