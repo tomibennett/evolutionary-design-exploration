@@ -176,7 +176,7 @@ public class GameTest {
 
     // introducing winning/loosing concept
     @Test
-    void aOneNumberBoardWithOneMarkedNumberLooses() {
+    void aOneNumberBoardWithNoMarkedNumberLooses() {
         final var board = new BoardBuilder()
             .withNumber(BingoNumber.fromString("23"))
             .build();
@@ -220,7 +220,20 @@ public class GameTest {
 
         assertEquals(BoardMessage.looses(), actual);
     }
-//    @Test
+
+    @Test
+    void aTwoNumbersBoardWithBothOfItsNumberWins() {
+        final var board = new BoardBuilder()
+            .withNumber(BingoNumber.fromString("23").mark())
+            .withNumber(BingoNumber.fromString("135").mark())
+            .build();
+
+        final var actual = isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 1) ? BoardMessage.wins() : BoardMessage.looses();
+
+        assertEquals(BoardMessage.wins(), actual);
+    }
+
+    //    @Test
 //    void aTwoNumbersBoardWithTwoMarkedNumbersWins() {
 //        final var board = new BoardBuilder()
 //            .withNumber(BingoNumber.fromString("23").mark())
