@@ -28,6 +28,7 @@ public class GameTest {
 
         assertEquals(expected, board);
     }
+
     @Test
     void boardWithNumber3And66IsBoardWithNumber3And66() {
 
@@ -222,7 +223,7 @@ public class GameTest {
         final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
         final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
         final var actual = isFirstNumberMarked && isSecondNumberMarked ? BoardMessage.wins() : BoardMessage.looses();
-        
+
         assertEquals(BoardMessage.looses(), actual);
     }
 
@@ -236,6 +237,21 @@ public class GameTest {
         final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
         final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
         final var actual = isFirstNumberMarked && isSecondNumberMarked ? BoardMessage.wins() : BoardMessage.looses();
+
+        assertEquals(BoardMessage.wins(), actual);
+    }
+
+    @Test
+    void aThreeNumbersBoardWithAllOfItsNumberMarkedWins() {
+        final var board = new BoardBuilder()
+            .withNumber(BingoNumber.fromString("23").mark())
+            .withNumber(BingoNumber.fromString("135").mark())
+            .withNumber(BingoNumber.fromString("135").mark())
+            .build();
+
+        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
+        final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
+        final var actual = isFirstNumberMarked && isSecondNumberMarked && isNumberMarkedAt(board, 2) ? BoardMessage.wins() : BoardMessage.looses();
 
         assertEquals(BoardMessage.wins(), actual);
     }
