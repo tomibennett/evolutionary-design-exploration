@@ -244,11 +244,19 @@ public class GameTest {
         final var board = new BoardBuilder()
             .withNumber(BingoNumber.fromString("23").mark())
             .withNumber(BingoNumber.fromString("135").mark())
-            .withNumber(BingoNumber.fromString("135").mark())
+            .withNumber(BingoNumber.fromString("645").mark())
             .build();
 
-        final var areAllNumbersMarked = isNumberMarkedAt(board, 0) && isNumberMarkedAt(board, 1) && isNumberMarkedAt(board, 2);
-        final var actual = getBoardMessage(areAllNumbersMarked);
+        final var boardMessage =
+            isNumberMarkedAt(board, 0) == false
+            ? BoardMessage.looses()
+            : isNumberMarkedAt(board, 1) == false
+                ? BoardMessage.looses()
+                : isNumberMarkedAt(board, 2) == false
+                    ? BoardMessage.looses()
+                    : BoardMessage.wins();
+
+        final var actual = boardMessage;
 
         assertEquals(BoardMessage.wins(), actual);
     }
