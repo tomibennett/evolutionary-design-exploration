@@ -182,7 +182,8 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("23"))
             .build();
 
-        final var actual = BoardMessage.looses();
+        final var areAllNumbersMarked = areAllNumbersMarkedInAOneRowAndOneColumnBoard(board);
+        final var actual = getBoardMessage(areAllNumbersMarked);
 
         assertEquals(BoardMessage.looses(), actual);
     }
@@ -193,8 +194,8 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("23").mark())
             .build();
 
-        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
-        final var actual = isFirstNumberMarked ? BoardMessage.wins() : BoardMessage.looses();
+        final var areAllNumbersMarked = areAllNumbersMarkedInAOneRowAndOneColumnBoard(board);
+        final var actual = getBoardMessage(areAllNumbersMarked);
 
         assertEquals(BoardMessage.wins(), actual);
     }
@@ -206,9 +207,8 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135"))
             .build();
 
-        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
-        final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
-        final var actual = isFirstNumberMarked && isSecondNumberMarked ? BoardMessage.wins() : BoardMessage.looses();
+        final var areAllNumbersMarked = areAllNumbersMarkedInAOneRowAndTwoColumnsBoard(board);
+        final var actual = getBoardMessage(areAllNumbersMarked);
 
         assertEquals(BoardMessage.looses(), actual);
     }
@@ -220,9 +220,8 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135").mark())
             .build();
 
-        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
-        final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
-        final var actual = isFirstNumberMarked && isSecondNumberMarked ? BoardMessage.wins() : BoardMessage.looses();
+        final var areAllNumbersMarked = areAllNumbersMarkedInAOneRowAndTwoColumnsBoard(board);
+        final var actual = getBoardMessage(areAllNumbersMarked);
 
         assertEquals(BoardMessage.looses(), actual);
     }
@@ -234,9 +233,8 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135").mark())
             .build();
 
-        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
-        final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
-        final var actual = isFirstNumberMarked && isSecondNumberMarked ? BoardMessage.wins() : BoardMessage.looses();
+        final var areAllNumbersMarked = areAllNumbersMarkedInAOneRowAndTwoColumnsBoard(board);
+        final var actual = getBoardMessage(areAllNumbersMarked);
 
         assertEquals(BoardMessage.wins(), actual);
     }
@@ -249,11 +247,22 @@ public class GameTest {
             .withNumber(BingoNumber.fromString("135").mark())
             .build();
 
-        final var isFirstNumberMarked = isNumberMarkedAt(board, 0);
-        final var isSecondNumberMarked = isNumberMarkedAt(board, 1);
-        final var actual = isFirstNumberMarked && isSecondNumberMarked && isNumberMarkedAt(board, 2) ? BoardMessage.wins() : BoardMessage.looses();
+        final var areAllNumbersMarked = areAllNumbersMarkedInAOneRowAndTwoColumnsBoard(board) && isNumberMarkedAt(board, 2);
+        final var actual = getBoardMessage(areAllNumbersMarked);
 
         assertEquals(BoardMessage.wins(), actual);
+    }
+
+    private static boolean areAllNumbersMarkedInAOneRowAndOneColumnBoard(final Board board) {
+        return isNumberMarkedAt(board, 0);
+    }
+
+    private static boolean areAllNumbersMarkedInAOneRowAndTwoColumnsBoard(final Board board) {
+        return areAllNumbersMarkedInAOneRowAndOneColumnBoard(board) && isNumberMarkedAt(board, 1);
+    }
+
+    private static String getBoardMessage(final boolean areAllNumbersMarked) {
+        return areAllNumbersMarked ? BoardMessage.wins() : BoardMessage.looses();
     }
 
     static boolean isNumberMarkedAt(final Board board, final int index) {
